@@ -4,17 +4,18 @@ import AvatarWrapSug from "./AvatarWrapSug";
 const Suggestions = () => {
   const data = [
     {
-      userName: "q2we",
-      imageURL: "https://www.w3schools.com/w3css/img_avatar3.png",
+      userName: "uscviterbi",
+      imageURL:
+        "https://firebasestorage.googleapis.com/v0/b/instag-v1.appspot.com/o/avatars%2Ftrojan_200.png?alt=media&token=edb8b50c-6738-4690-afc9-b303cb7eaa37",
     },
     {
-      userName: "stkcoj",
+      userName: "usccareer",
       imageURL:
-        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTJYxr247w5ckIok4oLED58Lm7koT7pj4225A&usqp=CAU",
+        "https://firebasestorage.googleapis.com/v0/b/instag-v1.appspot.com/o/avatars%2Fusc_200.png?alt=media&token=1d9fd5a7-b646-4ba0-992c-df0563861db9",
     },
   ];
   return (
-    <div className="w-full">
+    <>
       <div className="w-full text-sm text-start text-gray-400 font-semibold">
         Suggested for you
       </div>
@@ -30,7 +31,7 @@ const Suggestions = () => {
           />
         ))}
       </div>
-    </div>
+    </>
   );
 };
 

@@ -7,14 +7,15 @@ import Suggestions from "../InfoSection/Suggestions";
 const MainContent = ({ userInfo }) => {
   return (
     <div
-      className=" mt-10 ml-[20rem] lg:ml-[30em]  flex flex-row justify-center 
-    bg-[#FAFAFA]"
+      className=" mt-10 ml-[calc(100vw*1/5)] lg:ml-[calc(100vw*1/3)]  
+      flex flex-row justify-center 
+    "
     >
       <div className="flex flex-col  ">
         <StatusBar />
         <MainPage />
       </div>
-      <div className="flex flex-col ml-10 w-[600px]">
+      <div className="flex flex-col ml-10  w-[calc(100vw*1/5)] ">
         <InfoSection userInfo={userInfo} />
         <Suggestions />
       </div>

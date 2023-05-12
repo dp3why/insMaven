@@ -32,7 +32,7 @@ const Signupblock = () => {
           userName: userName,
           name: name,
           profileImage:
-            "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png",
+            "https://firebasestorage.googleapis.com/v0/b/instag-v1.appspot.com/o/avatars%2Fpp5.png?alt=media&token=d6c5aa53-fe87-4ad1-a8ed-4195c01fb2a2",
         };
 
         const requestOptions = {
@@ -42,8 +42,7 @@ const Signupblock = () => {
         };
         updateProfile(auth.currentUser, {
           displayName: userName,
-          photoURL:
-            "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png",
+          photoURL: payload.profileImage,
         })
           .then(() => {
             // Profile updated!

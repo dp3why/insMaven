@@ -18,7 +18,7 @@ code {
 
 @layer components {
   .sidebar_icons {
-    @apply text-xl;
+    @apply text-xl hover:scale-110;
   }
 
   .sidebar_text {

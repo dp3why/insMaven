@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import statusimg from "../../images/pp2.png";
+import statusimg from "../../images/pp5.png";
 
 import {
   IoPaperPlaneOutline,
@@ -51,7 +51,6 @@ const Post = ({ userName, likeCount, postImage, postId }) => {
           text-gray-600 "
           >
             <h1 className="text-base font-bold"> {userName}</h1>
-            <h2 className="text-sm text-gray-500  "> intoduction of user </h2>
           </div>
         </div>
       </div>

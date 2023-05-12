@@ -3,7 +3,7 @@ import AvatarWrapInfo from "./AvatarWrapInfo";
 
 const InfoSection = ({ userInfo }) => {
   return (
-    <div className="flex w-full mt-6">
+    <div className="flex mt-6">
       <AvatarWrapInfo
         className="w-8"
         imgUrl={userInfo.photoURL}

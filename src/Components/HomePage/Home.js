@@ -17,7 +17,7 @@ const Home = () => {
         setUserInfo(user);
       }
     });
-  }, []);
+  });
 
   return (
     <div className="flex flex-row justify-between">

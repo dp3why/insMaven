@@ -1,7 +1,7 @@
 import React, { useCallback, useState } from "react";
 import inst_image from "../../images/9364675fb26a.svg";
 import insta_logo from "../../images/logoinsta.png";
-import fb from "../../images/fb.png";
+// import fb from "../../images/fb.png";
 import Signinblock from "./Signinblock";
 import Signupblock from "./Signupblock";
 import { auth } from "../../firebase";

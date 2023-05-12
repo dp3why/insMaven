@@ -1,13 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import insta_log from "../../images/logoinsta.png";
 import { getAuth, signOut } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
 import { Menu } from "@headlessui/react";
 
 import {
-  IoHomeOutline,
   IoCompassOutline,
-  IoLogOutOutline,
   IoSearch,
   IoLogoInstagram,
   IoMoonOutline,
@@ -18,10 +16,11 @@ import { HiOutlineHeart } from "react-icons/hi";
 import { AiOutlineMenu } from "react-icons/ai";
 import { FaRegBookmark } from "react-icons/fa";
 import { BsExclamationCircle, BsGearWide } from "react-icons/bs";
-import { useState } from "react";
+import { MdHomeFilled } from "react-icons/md";
 
 const NavBar = () => {
-  const [menuOpen, SetMenuOpen] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
+  const [uploadOpen, setUpload] = useState(false);
   const navigate = useNavigate();
   const auth = getAuth();
   const signOutUser = () => {
@@ -36,53 +35,57 @@ const NavBar = () => {
       });
   };
   const handleMenu = () => {
-    SetMenuOpen(!menuOpen);
+    setMenuOpen(!menuOpen);
   };
 
-  const menuClass = ` z-500 px-2 py-3 w-[200px] ${menuOpen ? "shadow-lg" : ""}`;
+  const handleCreate = () => {
+    setUpload(!uploadOpen);
+  };
+
+  const menuClass = ` z-500 px-2 py-3  ${menuOpen ? "shadow-lg" : ""}`;
   return (
     <div
-      className="flex flex-col items-start justify-between px-5  py-10 
-    border-r border-[#DBDBDB] border-solid fixed
-    h-screen w-[240px]"
+      className="flex flex-col items-start justify-between px-5 pt-4 pb-5 
+    border-r border-[#DBDBDB] border-solid fixed xl:w-[260px]
+    h-[calc(100vh-20px)]  "
     >
-      <div className="flex flex-col items-start gap-5 justify-evenly">
+      <div className="flex flex-col items-start gap-3 justify-evenly">
         <IoLogoInstagram className="sidebar_icons xl:hidden" />
         <img
-          className="mb-4 hidden xl:block"
+          className="mb-2 hidden xl:block"
           alt="logo"
           src={insta_log}
           width="100px"
         />
-        <span className="flex">
-          <IoHomeOutline className="sidebar_icons" />
-          <h3 class="sidebar_text">Home</h3>
+        <span className="flex cursor-pointer">
+          <MdHomeFilled className="sidebar_icons" />
+          <h3 className="sidebar_text">Home</h3>
         </span>
-        <span className="flex">
+        <span className="flex cursor-pointer ">
           <IoSearch className="sidebar_icons" />
-          <h3 class="sidebar_text">Search</h3>
+          <h3 className="sidebar_text">Search</h3>
         </span>
-        <span className="flex">
+        <span className="flex cursor-pointer">
           <IoCompassOutline className="sidebar_icons" />
-          <h3 class="sidebar_text">Explore</h3>
+          <h3 className="sidebar_text">Explore</h3>
         </span>
-        <span className="flex">
+        <span className="flex cursor-pointer">
           <RiMessengerLine className="sidebar_icons" />
-          <h3 class="sidebar_text">Messages</h3>
+          <h3 className="sidebar_text">Messages</h3>
         </span>
-        <span className="flex">
+        <span className="flex cursor-pointer">
           <HiOutlineHeart className="sidebar_icons" />
-          <h3 class="sidebar_text">Notifications</h3>
+          <h3 className="sidebar_text">Notifications</h3>
         </span>
-        <span className="flex">
+        <span className="flex cursor-pointer" onClick={handleCreate}>
           <TbSquareRoundedPlus className="sidebar_icons" />
-          <h3 class="sidebar_text">Create</h3>
+          <h3 className="sidebar_text">Create</h3>
         </span>
       </div>
       <>
         <Menu>
           <div className={menuClass}>
-            <Menu.Items className="flex flex-col gap-2 text-sm">
+            <Menu.Items className="flex flex-col gap-0 text-xs xl:w-[200px]">
               <Menu.Item>
                 <span className="sidebar_menuicon">
                   Settings
@@ -126,7 +129,7 @@ const NavBar = () => {
           <Menu.Button className="" onClick={handleMenu}>
             <span className="flex  cursor-pointer">
               <AiOutlineMenu className="sidebar_icons" />
-              <h3 class="sidebar_text">More</h3>
+              <h3 className="sidebar_text">More</h3>
             </span>
           </Menu.Button>
         </Menu>
