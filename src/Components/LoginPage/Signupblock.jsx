@@ -32,7 +32,7 @@ const Signupblock = () => {
           userName: userName,
           name: name,
           profileImage:
-            "https://firebasestorage.googleapis.com/v0/b/instag-v1.appspot.com/o/avatars%2Fpp5.png?alt=media&token=d6c5aa53-fe87-4ad1-a8ed-4195c01fb2a2",
+            "https://firebasestorage.googleapis.com/v0/b/instag-v1.appspot.com/o/avatars%2Fpp2.jpg?alt=media&token=403d86c9-a7a8-492c-bc10-2875cbd9bf3e",
         };
 
         const requestOptions = {

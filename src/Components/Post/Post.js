@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
-import statusimg from "../../images/pp5.png";
-
+import statusimg from "../../images/pp4.jpeg";
 import {
   IoPaperPlaneOutline,
   IoChatbubbleOutline,
@@ -10,22 +9,20 @@ import {
 const Post = ({ userName, likeCount, postImage, postId }) => {
   const [commentList, setCommentList] = useState([]);
   const [commentNumber, setComNumber] = useState(0);
-  const requestOptions = {
-    method: "GET",
-    headers: { "Content-Type": "application/json" },
-  };
 
   useEffect(() => {
-    fetch(
-      `${process.env.REACT_APP_BACK_URL}/comments/${postId}`,
-      requestOptions
-    )
+    fetch(`${process.env.REACT_APP_BACK_URL}/comments/${postId}`, {
+      method: "GET",
+      headers: { "Content-Type": "application/json" },
+    })
       .then((response) => response.json())
       .then((data) => {
         setCommentList(data);
         setComNumber(data.length);
       })
-      .catch((error) => {});
+      .catch((err) => {
+        console.error(err);
+      });
   }, [postId]);
 
   return (
@@ -73,7 +70,7 @@ const Post = ({ userName, likeCount, postImage, postId }) => {
       {/* Comments Section*/}
       <div className="text-md ">
         <div className="ml-4 text-start text-sm font-semibold text-gray-500 ">
-          View all {commentNumber} comments
+          {commentNumber >= 3 ? `View all ${commentNumber} comments` : ""}
         </div>
         {/* Comments from other users */}
         {commentList.slice(0, 5).map((item, index) => (
@@ -87,7 +84,7 @@ const Post = ({ userName, likeCount, postImage, postId }) => {
 
         <div className="flex items-center border-t border-solid border-[#DBDBDB]">
           <input
-            className="h-[56px] w-[608px] pl-4  focus:outline-none
+            className="h-[56px] w-[608px] pl-4  focus:outline-none text-sm
           "
             type="text"
             placeholder="Add a comment..."

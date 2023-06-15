@@ -4,6 +4,7 @@ import StatusBar from "../StatusBar/StatusBar";
 import InfoSection from "../InfoSection/InfoSection";
 import Suggestions from "../InfoSection/Suggestions";
 
+// main container: including main page
 const MainContent = ({ userInfo }) => {
   return (
     <div
