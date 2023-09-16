@@ -20,7 +20,7 @@ import { MdHomeFilled } from "react-icons/md";
 
 const NavBar = ({ toggleModal }) => {
   const [menuOpen, setMenuOpen] = useState(false);
-  const [uploadOpen, setUpload] = useState(false);
+
   const navigate = useNavigate();
   const auth = getAuth();
   const signOutUser = () => {
@@ -36,10 +36,6 @@ const NavBar = ({ toggleModal }) => {
   };
   const handleMenu = () => {
     setMenuOpen(!menuOpen);
-  };
-
-  const handleCreate = () => {
-    setUpload(!uploadOpen);
   };
 
   const menuClass = ` z-500 px-2 py-3  ${menuOpen ? "shadow-lg" : ""}`;
