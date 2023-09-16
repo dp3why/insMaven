@@ -18,7 +18,7 @@ import { FaRegBookmark } from "react-icons/fa";
 import { BsExclamationCircle, BsGearWide } from "react-icons/bs";
 import { MdHomeFilled } from "react-icons/md";
 
-const NavBar = () => {
+const NavBar = ({ toggleModal }) => {
   const [menuOpen, setMenuOpen] = useState(false);
   const [uploadOpen, setUpload] = useState(false);
   const navigate = useNavigate();
@@ -77,7 +77,7 @@ const NavBar = () => {
           <HiOutlineHeart className="sidebar_icons" />
           <h3 className="sidebar_text">Notifications</h3>
         </span>
-        <span className="flex cursor-pointer" onClick={handleCreate}>
+        <span className="flex cursor-pointer" onClick={toggleModal}>
           <TbSquareRoundedPlus className="sidebar_icons" />
           <h3 className="sidebar_text">Create</h3>
         </span>
