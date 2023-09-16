@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import { BsImage, BsUpload } from "react-icons/bs";
-import { storage, auth } from "../../firebase.js";
+import { BsImage } from "react-icons/bs";
+import { storage } from "../../firebase.js";
 import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 import { v4 as uuid } from "uuid";
 
@@ -25,8 +25,7 @@ const Modal = ({ isVisible, toggleModal }) => {
     if (imageSelected == null || imageSelected === undefined) {
       return;
     }
-    console.log("uploading file:", imageSelected);
-    // const storageRef = ref(storage, "images");
+
     // const metadata = {
     //   contentType: "image/jpeg",
     // };
@@ -40,8 +39,8 @@ const Modal = ({ isVisible, toggleModal }) => {
       (snapshot) => {
         // Observe state change events such as progress, pause, and resume
         // Get task progress, including the number of bytes uploaded and the total number of bytes to be uploaded
-        const progress =
-          (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+        // const progress =
+        //   (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
       },
       (error) => {
         console.error(error);
