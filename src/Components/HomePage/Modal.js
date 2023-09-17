@@ -3,11 +3,13 @@ import { BsImage } from "react-icons/bs";
 import { storage } from "../../firebase.js";
 import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 import { v4 as uuid } from "uuid";
+import SVGProgressBar from "./SVGProgressBar.js";
 
-const Modal = ({ isVisible, toggleModal }) => {
+const Modal = ({ isVisible, toggleModal, getPost }) => {
   const [filename, setFilename] = useState("");
   const [imageShow, setImageShow] = useState(null);
   const [imageSelected, setImageSelected] = useState(null);
+  const [percentage, setPercentage] = useState(0);
 
   if (!isVisible) {
     return null;
@@ -39,8 +41,9 @@ const Modal = ({ isVisible, toggleModal }) => {
       (snapshot) => {
         // Observe state change events such as progress, pause, and resume
         // Get task progress, including the number of bytes uploaded and the total number of bytes to be uploaded
-        // const progress =
-        //   (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+        const progress =
+          (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+        setPercentage(progress);
       },
       (error) => {
         console.error(error);
@@ -49,7 +52,6 @@ const Modal = ({ isVisible, toggleModal }) => {
         // Handle successful uploads on complete
         // For instance, get the download URL: https://firebasestorage.googleapis.com/...
         getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
-          console.log("File URL:", downloadURL);
           let payload = {
             postId: uuid(),
             userId: JSON.parse(localStorage.getItem("users")).uid,
@@ -62,10 +64,11 @@ const Modal = ({ isVisible, toggleModal }) => {
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(payload),
           };
-          fetch(`${process.env.REACT_APP_BACK_URL}/post`, requestOptions)
+          fetch(`${process.env.REACT_APP_BACK_URL}/posts`, requestOptions)
             .then((response) => response.json())
             .then((data) => {
               console.log(data);
+              window.location.reload();
             })
             .catch((error) => console.error(error));
         });
@@ -126,7 +129,7 @@ const Modal = ({ isVisible, toggleModal }) => {
                   Click here to upload an image
                 </p>
               </label>
-
+              {percentage !== 0 && <SVGProgressBar percentage={percentage} />}
               <input
                 className="px-3 py-2 rounded-md hidden"
                 type="file"
